@@ -1,3 +1,18 @@
+// function locationizer(work_obj) {
+//     return [work.jobs[0].location,
+//            work.jobs[1].location,
+//            work.jobs[2].location,
+//            work.jobs[3].location];            
+// }
+
+// function locationizer(work_obj){
+//     var locations = [];
+//     for(var jobIndex in work.jobs) {
+//         locations.push(work.jobs[jobIndex].location);  
+//     }
+//     return locations;
+// }
+
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
@@ -167,6 +182,15 @@ bio.skills.forEach(printSkill);
 
 		 logClicks(x,y);
 	});
+
+$("main").append(internationalizeButton);
+
+var inName = (function(HTMLheaderName)){
+	HTMLheaderName.split(" ");
+	HTMLheaderName[1].toUpperCase(); 
+}
+return inName;
+
 
 
 
