@@ -74,19 +74,22 @@ The next few lines about clicks are for the Collecting Click Locations quiz in L
 */
 clickLocations = [];
 
-function logClicks(x,y) {
-  clickLocations.push(
-    {
-      x: x,
-      y: y
-    }
-  );
-  console.log('x location: ' + x + '; y location: ' + y);
-}
+// function logClicks(x,y) {
+//   clickLocations.push(
+//     {
+//       x:x
+//       y:x
+//     }
+//   );
+//   console.log('x location: ' + x + '; y location: ' + y);
+// }
 
-$(document).click(function(loc) {
-  // your code goes here!
-});
+// $(document).click(function(loc) {
+//     var x = loc.pageX;
+//       var y = loc.pageY;
+
+//       logClicks(x,y);
+// });
 
 
 

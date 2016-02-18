@@ -37,7 +37,7 @@ var education = {
 },
 {
 	"name": "Enspiral Dev Academy",
-	"location": "Wellington NZ",
+	"location": "Wellington NZ", 
 	"majors": "Web Development",
 	"graduationYear": 2016
 }
@@ -47,20 +47,18 @@ var education = {
 var work = {
 	jobs: [
 		{
-			"employer": "350.org Aotearoa",
-			"title": "Mobilisation Manager",
-			"location": "Auckland NZ",
-			"dates": "Oct 2014 - Nov 2015",
-			"description": "Offline mobilisation and advocacy on climate change issues, " + 
-			"specialising in fossil fuel divestment"
+			"employer": "Fat Cats Inc",
+			"title": "Top Dog",
+			"location": "Aotearoa",
+			"dates": "2015",
+			"description": "Top dog at Fat Cats Inc. Specialising in cigars and champagne for rich white catitalists."
 		},
 		{
-			"employer": "RockEnrol",
-			"title": "Co-Founder",
-			"location": "Auckland NZ",
+			"employer": "Space Kittens Against Neo-Liberalism",
+			"title": "Mother Kitteh",
+			"location": "Pluto",
 			"dates": 2014,
-			"description": "Co-founded and did strategic planning and offline campaign " +
-			"implementation in the lead up to the 2014 general election."
+			"description": "Main duties: organising street blockades of earth with the notorious K.L.C (Kitteh Litter Crew)."
 		}
 	]
 };
@@ -97,28 +95,28 @@ displayWork();
 var projects = {
 	projects: [
 	{
-	"title": "Show Us Ya Text / Real Choice",
+	"title": "We Can Haz Space-Shipz Too",
 	"dates": 2015,
-	"description": "NVDA group promoting democratic transparency around the TPPA",
-	"images": "http://placekitten.com/200/300"
+	"description": "A space-travel empowerment project, for cats, by cats",
+	"images": "images/catSpaceShip.gif"
 }
 	]
 };
 
 
- var skills = ["communication", "management", "teaching"];
+ var skills = ["Meow Skillz", "space-travel", "alternative purring techniques", "Neo-liberal catitalism"];
 
  var bio = {
  	name: "Lizzie LaShark",
  	role: "Student Web Developer",
  	location: "Auckland NZ",
  	contactInfo: { 
-	 	"email": "Lizzie@lizzielashark.com",
+	 	"email": "Lizzie@lizzielashark.email",
 	 	"twitter": "@lizzielashark",
 	 	"github": "LizzieLaShark"
 	 },
- 	picture: "images/catBud.gif",
- 	welcomeMessage: "Haere mai ki Lizzzie's Resume site!",
+ 	picture: "images/fatCat.gif",
+ 	welcomeMessage: "Kitteh got back",
  	skills: skills
  };
 
@@ -129,9 +127,19 @@ var displayBioPic = function() {
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
 	$("#header").append(formattedBioPic);
 };
+var displayWelcomeMsg = function() {
+	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedWelcomeMsg);
+};
+var displayContactDeets = function() {
+	var formattedContactDeets = HTMLcontactGeneric.replace("%data%", bio.contactInfo);
+	$("#header").append(formattedContactDeets);
+};
+
+displayContactDeets();
 
 displayBioPic();
-
+displayWelcomeMsg();
 
 if (bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
