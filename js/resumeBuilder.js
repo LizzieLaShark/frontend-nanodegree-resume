@@ -27,51 +27,60 @@ var formattedRole = HTMLheaderRole.replace("%data%", "Junior Web Developer");
 $("#header").append(formattedRole);
 
 
-// var work = {};
-// work.city="Auckland";
-// work.currentPosition="Environmental Campaigner";
-// work.Employer="350.org Aotearoa";
-// work.yearsWorked=1.5;
-
-// var education = {};
-
-// education["name"] = ["Victoria University"];
-// education["yearsAttended"] = ["2008 - 2011"];
-// education["location"] = ["Wellington"];
-
-// $("#main").append(work.currentPosition);
-// $("#main").append(education["name"]);
 
 var education = {
 	"schools": [
 	{
-	"name": "Victoria University",
+	"name": "Ivory Tower",
 	"location": "Wellington, NZ",
-	"Majors": ["Environmental Science", "Maori Resource Management"],
+	"Majors": ["Theories, Unrequited love, Coffee and Cigarettes"],
 	"graduationYear": 2011
 },
 {
-	"name": "Enspiral Dev Academy",
-	"location": "Wellington NZ", 
-	"majors": "Web Development",
-	"graduationYear": 2016
+	"name": "Real World",
+	"location": "Planet Earth", 
+	"majors": "Other Humans, Money, Emotions, Inequality",
+	"graduationYear": "TBA"
 }
 ]
 };
+
+var displayEducation = function() {
+	for (schoolsIndex in educationArray){
+		$("#education").append(HTMLschoolStart);
+		formattedSchoolName = HTMLschoolName.replace("%data%", education.schools.name);		
+		$(".education-entry:last").append(formattedSchoolName);
+
+		formattedSchoolLocation = HTMLschoolLocation.replace("%data%", educationArray.location);
+		$(".education-entry:last").append(formattedSchoolLocation);
+
+		formattedSchoolMajor = HTMLschoolMajor.replace("%data%", educationArray.majors);
+		$(".education-entry:last").append(formattedSchoolMajor);
+
+		formattedSchoolDates = HTMLschoolDates.replace("%data%", educationArray.graduationYear);
+		$(".education-entry:last").append(formattedSchoolDates);
+
+	}
+};
+
+
+var educationArray = education.schools;
+
+displayEducation();
 
 var work = {
 	jobs: [
 		{
 			"employer": "Fat Cats Inc",
 			"title": "Top Dog",
-			"location": "Aotearoa",
+			"location": "Cuba",
 			"dates": "2015",
 			"description": "Top dog at Fat Cats Inc. Specialising in cigars and champagne for rich white catitalists."
 		},
 		{
 			"employer": "Space Kittens Against Neo-Liberalism",
 			"title": "Mother Kitteh",
-			"location": "Pluto",
+			"location": "Russia",
 			"dates": 2014,
 			"description": "Main duties: organising street blockades of earth with the notorious K.L.C (Kitteh Litter Crew)."
 		}
@@ -105,8 +114,6 @@ var displayWork = function() {
 
 displayWork();
 
-
-
 var projects = {
 	projects: [
 	{
@@ -114,6 +121,12 @@ var projects = {
 	"dates": 2015,
 	"description": "A space-travel empowerment project, for cats, by cats",
 	"images": "images/catSpaceShip.gif"
+},
+{
+	"title": "Kitties and Chickies Unite for Change",
+	"dates": 2014,
+	"description": "A solidarity project for cats who want to use their priviledge to help chickens living in poor and overcrowded conditions.",
+	"images": "images/catAndChook.jpg"
 }
 	]
 };
@@ -124,16 +137,32 @@ var projects = {
  var bio = {
  	name: "Lizzie LaShark",
  	role: "Student Web Developer",
- 	location: "Auckland NZ",
+ 	contacts: {
+ 		location: "Auckland NZ",
+  	},
  	contactInfo: { 
 	 	"email": "Lizzie@lizzielashark.email",
 	 	"twitter": "@lizzielashark",
-	 	"github": "LizzieLaShark"
+	 	"github": "LizzieLaShark",
+	 	"location": "Aotearoa / New Zealand"
 	 },
  	picture: "images/fatCat.gif",
  	welcomeMessage: "Kitteh got back",
  	skills: skills
  };
+
+
+var displayTwitter = function() {
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contactInfo.twitter);
+	$("#header").append(formattedTwitter);
+};
+var displayGitHub = function() {
+	var formattedGitHub = HTMLgithub.replace("%data%", bio.contactInfo.github);
+	$("#header").append(formattedGitHub);
+};
+
+displayTwitter();
+displayGitHub();
 
 var myFunc = function(param1, param2) {
          //function code lives in here
@@ -146,12 +175,14 @@ var displayWelcomeMsg = function() {
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 	$("#header").append(formattedWelcomeMsg);
 };
-var displayContactDeets = function() {
-	var formattedContactDeets = HTMLcontactGeneric.replace("%data%", bio.contactInfo);
-	$("#header").append(formattedContactDeets);
-};
+// var displayTwitter = function() {
+// 	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contactInfo.[1]);
+// 	$("#header").append(formattedTwitter);
+// };
 
-displayContactDeets();
+// var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
+
+// displayContactDeets();
 
 displayBioPic();
 displayWelcomeMsg();
@@ -176,26 +207,57 @@ var printSkill = function (skill) {
 bio.skills.forEach(printSkill);
 
 
-	$(document).click(function(loc) {
-		 var x = loc.pageX;
-		 var y = loc.pageY;
+	// $(document).click(function(loc) {
+	// 	 var x = loc.pageX;
+	// 	 var y = loc.pageY;
 
-		 logClicks(x,y);
-	});
+	// 	 logClicks(x,y);
+	// });
 
-$("main").append(internationalizeButton);
 
-var inName = (function(HTMLheaderName)){
-	HTMLheaderName.split(" ");
-	HTMLheaderName[1].toUpperCase(); 
+var inName = function(){
+
+	var headerElement = document.getElementById('name');
+	var name = headerElement.innerText;
+
+	name = name.split(" ");
+	name[1] = name[1].toUpperCase(); 
+	return name[0] + " " + name[1];
+};
+
+// var headerElement = document.getElementById('name');
+// var headerName = headerElement.innerText;
+// var newHeaderName = inName(headerName);
+// headerElement.innerText = newHeaderName;
+
+$('#main').append(internationalizeButton);
+
+// $(document).ready(function() {
+//   $('button').click(function() {
+
+//   });
+// });
+
+projects.display = function() {
+	for (project in projects.projects) {
+	$("#projects").append(HTMLprojectStart);
+	
+	var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+	$(".project-entry:last").append(formattedprojectTitle);
+
+	var formattedprojectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+	$(".project-entry:last").append(formattedprojectDates);
+
+	var formattedprojectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+	$(".project-entry:last").append(formattedprojectDescription);
+
+	if (projects.projects[project].images.length > 0) {
+			var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+			$(".project-entry:last").append(formattedImage);
+	}
 }
-return inName;
+};
 
+projects.display();
 
-
-
-
-
-
-
-
+$("#mapDiv").append(googleMap);
